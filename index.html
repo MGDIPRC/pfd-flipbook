@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>PDF Viewer</title>
+
+  <link rel="stylesheet" href="css/viewer.css">
+
+  <noscript>
+
+    <style>
+      .book-controls,
+      #document-loading,
+      .book-viewport {
+        display: none !important;
+      }
+    </style>
+
+  </noscript>
+
+</head>
+
+<body>
+
+  <main class="viewer">
+
+    <noscript>
+
+      <div class="document-loading document-error">
+
+        <p>Interactive viewer unavailable</p>
+
+        <span>
+          JavaScript is required to use the
+          interactive document viewer.
+          You can access the downloadable
+          PDF below.
+        </span>
+
+      </div>
+
+    </noscript>
+
+    <div class="book-controls">
+
+      <div class="zoom-controls">
+
+        <button id="zoom-out-button" type="button" aria-label="Zoom out">
+          −
+        </button>
+
+        <span id="zoom-display" aria-live="polite">
+          100%
+        </span>
+
+        <button id="zoom-in-button" type="button" aria-label="Zoom in">
+          +
+        </button>
+
+        <button id="zoom-reset-button" type="button">
+          Reset
+        </button>
+
+        <button id="select-tool-button" class="tool-button is-active" type="button" aria-label="Select text"
+          aria-pressed="true" title="Select text">
+          <img class="select-tool-icon" src="./images/cursor.svg" alt="">
+        </button>
+
+        <button id="hand-tool-button" class="tool-button" type="button" aria-label="Pan document" aria-pressed="false"
+          title="Pan document">
+          <img class="hand-tool-icon" src="./images/hand.svg" alt="">
+        </button>
+
+      </div>
+
+
+      <div class="page-controls">
+
+        <button id="previous-button" type="button">
+          ← Previous
+        </button>
+
+        <div class="page-indicator">
+          Page
+          <label class="visually-hidden" for="page-number-input">
+            Page number
+          </label>
+
+          <input id="page-number-input" class="page-number-input" type="text" inputmode="numeric" pattern="[0-9]*"
+            value="1" aria-label="Page number">
+
+          <span class="page-total-separator" aria-hidden="true">
+            /
+          </span>
+
+          <span id="total-pages">0</span>
+        </div>
+
+        <button id="next-button" type="button">
+          Next →
+        </button>
+
+      </div>
+
+
+      <div class="search-controls" role="search" aria-label="Search document">
+
+        <label class="visually-hidden" for="search-input">
+          Search document
+        </label>
+
+        <input id="search-input" type="search" placeholder="Search" autocomplete="off" spellcheck="false">
+
+        <button id="search-button" type="button">
+          Search
+        </button>
+
+        <button id="search-previous-button" type="button" aria-label="Previous search result" title="Previous result"
+          disabled>
+          ↑
+        </button>
+
+        <button id="search-next-button" type="button" aria-label="Next search result" title="Next result" disabled>
+          ↓
+        </button>
+
+        <span id="search-results" class="search-results" aria-live="polite"></span>
+
+        <button id="search-clear-button" type="button" aria-label="Clear search" title="Clear search" disabled>
+          ×
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div id="document-loading" class="document-loading" role="status" aria-live="polite">
+
+      <div class="loading-spinner" aria-hidden="true"></div>
+
+      <p>Loading document…</p>
+
+      <span>Preparing pages for viewing</span>
+
+    </div>
+
+
+    <div class="book-viewport">
+
+      <div class="book-wrapper">
+
+        <div id="book" class="book"></div>
+
+      </div>
+
+      <div id="document-error" class="document-loading document-error" role="alert" hidden>
+
+        <p>Unable to display document</p>
+
+        <span>
+          Please try refreshing the page or
+          accessing the downloadable PDF
+          below the viewer.
+        </span>
+
+      </div>
+
+    </div>
+
+  </main>
+
+
+  <script type="module" src="js/viewer.js"></script>
+
+</body>
+
+</html>
